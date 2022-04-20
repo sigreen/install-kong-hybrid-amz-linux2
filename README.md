@@ -80,7 +80,7 @@ curl -i -X GET --url http://localhost:8001/services
 
 ```bash
 curl -i -X POST http://<hostname>:8001/licenses \
-  -d payload='{"license":{"payload":{"admin_seats":"1","customer":"Example Company, Inc","dataplanes":"1","license_creation_date":"2017-07-20","license_expiration_date":"2017-07-20","license_key":"00141000017ODj3AAG_a1V41000004wT0OEAU","product_subscription":"Konnect Enterprise","support_plan":"None"},"signature":"6985968131533a967fcc721244a979948b1066967f1e9cd65dbd8eeabe060fc32d894a2945f5e4a03c1cd2198c74e058ac63d28b045c2f1fcec95877bd790e1b","version":"1"}}'
+  -d payload='<insert license>'
 ```
 
 10. Restart kong:
@@ -124,18 +124,4 @@ kong start -c dp-example.conf
 curl -i -X GET http://localhost:8001/clustering/data-planes
 ```
 
-8. Test the Management GUI via the browser: `http://<public_ip>:8002/overview`
-
-9. Via the CLI, apply your Enterprise license:
-
-```bash
-curl -i -X POST http://<hostname>:8001/licenses \
-  -d payload='{"license":{"payload":{"admin_seats":"1","customer":"Example Company, Inc","dataplanes":"1","license_creation_date":"2017-07-20","license_expiration_date":"2017-07-20","license_key":"00141000017ODj3AAG_a1V41000004wT0OEAU","product_subscription":"Konnect Enterprise","support_plan":"None"},"signature":"6985968131533a967fcc721244a979948b1066967f1e9cd65dbd8eeabe060fc32d894a2945f5e4a03c1cd2198c74e058ac63d28b045c2f1fcec95877bd790e1b","version":"1"}}'
-```
-
-10. Restart kong:
-
-```bash
-kong stop
-kong start -c cp-example.conf
-```
+8. Test the DP proxy via your dev machine browser: `curl http://<dp public IP>:8000`
